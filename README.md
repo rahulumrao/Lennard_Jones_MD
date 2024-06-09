@@ -71,3 +71,13 @@ python main.py input.xyz
 -> vel = velocity of each atom (np.array [dimension: N x 3])        <br>
 -> force = forces on each atom (np.array [dimension: N x 3])        <br>
 -> dn_type = MD type (str [NVE or NVT])
+
+
+## Entire code in a single `Python` file:
+-> lj_run.py
+
+_run_:
+
+```bash
+python lj_run.py input.xyz
+```
