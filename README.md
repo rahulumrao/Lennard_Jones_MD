@@ -31,17 +31,16 @@ _The use of this command:_ <br>
 
 ```bash
 run_dynamics(pos = 'cartesian coordinates of each atom (dimension: N x 3)', 
-                 step=100, 
-                 T=0.0005,
-                 n=2,
-                 mass=[40,40],
-                 box=[10.0, 10.0, 10.0],
-                 eps=0.20834,
-                 sig=2.2209,
-                 dt=20.0,
-                 Kb=1.0,
-                 pos=None,
-                 dyn_type=None)
+                 step = 'number of molecular dynamics steps', 
+                 T = 'temperature',
+                 n = 'number of atoms',
+                 mass = 'atomic mass of each atom',
+                 box = 'box size',
+                 eps = 'LJ - epsilon',
+                 sig = 'LJ - sigma',
+                 dt = 'md time step',
+                 Kb = 'Boltzmann constant',
+                 dyn_type = 'type of dynamics')
 ```
 
 # Arguments:
@@ -56,3 +55,4 @@ run_dynamics(pos = 'cartesian coordinates of each atom (dimension: N x 3)',
 -> pos = position of each atom (np.array [dimension: N x 3])
 -> vel = velocity of each atom (np.array [dimension: N x 3])
 -> force = forces on each atom (np.array [dimension: N x 3])
+-> dn_type = MD type (str [NVE or NVT])
