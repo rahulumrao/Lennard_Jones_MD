@@ -18,14 +18,20 @@ Where:
 
 ## How to install
 ### download the package -
-` git clone https://github.com/`
+```bash
+git clone https://github.com/`
+```
 
-` pip install .`
+```bash
+pip install .
+```
 
 ## How to use:
 _After instantiation the package use the following command:_ <br>
 
-**from LJengo import run_dynamics**
+```bash
+from LJengo import run_dynamics
+```
 
 _The use of this command:_ <br>
 
@@ -43,7 +49,7 @@ run_dynamics(pos = 'cartesian coordinates of each atom (dimension: N x 3)',
                  dyn_type = 'type of dynamics')
 ```
 
-# Arguments:
+## Arguments:
 -> T = temp                 (float)     <br>
 -> n = number of atoms      (integer)   <br>
 -> eps = epsilon            (float)     <br>
