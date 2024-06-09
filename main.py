@@ -57,11 +57,3 @@ run_dynamics(step=step, T=Temp, n=natom, mass=mass, box=box, eps=epsilon, sig=si
 
 
 ##############################################################################
-# # Time, Kinetic Energy, Potential Energy, Total Energy, Temperature
-data = np.loadtxt('energy.dat', delimiter=',')
-pe_data = np.loadtxt('potential.dat', delimiter=',')
-
-i_step, KE, PE, TE, Temp  = data[:,0], data[:,1], data[:,2], data[:,3], data[:,4]
-dist, pot = pe_data[:,0], pe_data[:,1]
-#
-
