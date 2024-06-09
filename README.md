@@ -24,6 +24,7 @@ git clone https://github.com/rahulumrao/Lennard_Jones_MD`
 
 ### Install :
 ```bash
+cd Lennard_Jones_MD 
 pip install .
 ```
 
