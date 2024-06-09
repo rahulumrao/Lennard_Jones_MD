@@ -16,12 +16,13 @@ Where:
 -> B = 4 * ε * σ ^12
 ```
 
-## How to install
-### download the package -
+## How to:
+### download -
 ```bash
-git clone https://github.com/`
+git clone https://github.com/rahulumrao/Lennard_Jones_MD`
 ```
 
+### install -
 ```bash
 pip install .
 ```
