@@ -16,25 +16,25 @@ Where:
 -> B = 4 * ε * σ ^12
 ```
 
-## How to:
-### download -
+## How to
+### Download :
 ```bash
 git clone https://github.com/rahulumrao/Lennard_Jones_MD`
 ```
 
-### install -
+### Install :
 ```bash
 pip install .
 ```
 
 ## How to use:
-_After instantiation the package use the following command:_ <br>
+_After installation, use the following command:_ <br>
 
 ```bash
 from LJengo import run_dynamics
 ```
 
-_The use of this command:_ <br>
+_use of `run_dynamics` :_ <br>
 
 ```bash
 run_dynamics(pos = 'cartesian coordinates of each atom (dimension: N x 3)', 
@@ -48,6 +48,12 @@ run_dynamics(pos = 'cartesian coordinates of each atom (dimension: N x 3)',
                  dt = 'md time step',
                  Kb = 'Boltzmann constant',
                  dyn_type = 'type of dynamics')
+```
+
+### Run:
+
+``` bash
+python main.py input.xyz
 ```
 
 ## Arguments:
