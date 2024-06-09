@@ -25,13 +25,24 @@ Where:
 ## How to use:
 _After instantiation the package use the following command:_ <br>
 
-** from LJengo import run_dynamics
+**from LJengo import run_dynamics**
 
 _The use of this command:_ <br>
 
-**run_dynamics(pos = 'cartesian coordinates of each atom (dimension: N x 3)',
-
-            )
+```bash
+run_dynamics(pos = 'cartesian coordinates of each atom (dimension: N x 3)', 
+                 step=100, 
+                 T=0.0005,
+                 n=2,
+                 mass=[40,40],
+                 box=[10.0, 10.0, 10.0],
+                 eps=0.20834,
+                 sig=2.2209,
+                 dt=20.0,
+                 Kb=1.0,
+                 pos=None,
+                 dyn_type=None)
+```
 
 # Arguments:
 -> T = temp                 (float)
