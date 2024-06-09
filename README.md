@@ -44,15 +44,15 @@ run_dynamics(pos = 'cartesian coordinates of each atom (dimension: N x 3)',
 ```
 
 # Arguments:
--> T = temp                 (float)
--> n = number of atoms      (integer)
--> eps = epsilon            (float)
--> sig = sigma              (float)
--> dt = time step           (float)
--> Kb = Boltzmann constant  (float)
--> mass = mass of each atom (np.array [dimension: N]) 
--> box = box size       (assuming Orhorhomic box [dimension: 3])
--> pos = position of each atom (np.array [dimension: N x 3])
--> vel = velocity of each atom (np.array [dimension: N x 3])
--> force = forces on each atom (np.array [dimension: N x 3])
+-> T = temp                 (float)     <br>
+-> n = number of atoms      (integer)   <br>
+-> eps = epsilon            (float)     <br>
+-> sig = sigma              (float)     <br>
+-> dt = time step           (float)     <br>
+-> Kb = Boltzmann constant  (float)     <br>
+-> mass = mass of each atom (np.array [dimension: N])               <br>
+-> box = box size       (assuming Orhorhomic box [dimension: 3])    <br>
+-> pos = position of each atom (np.array [dimension: N x 3])        <br>
+-> vel = velocity of each atom (np.array [dimension: N x 3])        <br>
+-> force = forces on each atom (np.array [dimension: N x 3])        <br>
 -> dn_type = MD type (str [NVE or NVT])
