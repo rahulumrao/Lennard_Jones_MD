@@ -73,8 +73,7 @@ python main.py input.xyz
 -> dn_type = MD type (str [NVE or NVT])
 
 
-## Entire code in a single `Python` file:
--> lj_run.py
+# Full code in a single `Python` file -> `lj_run.py`
 
 _run_:
 
