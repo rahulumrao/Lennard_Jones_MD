@@ -4,14 +4,34 @@ import sys
 import numpy as np
 import math as m
 import matplotlib.pyplot as plt
-#
-
+######################################################################
 def compute_force(pos, box, n, eps, sigma):
     '''
-    # computing forces on each atom from cartesian positions
-    # Using A, B scheme of Lennard Jones
-    A = 12000.0 ; B = 100.0
+    The Lennard-Jones potential is given by the equation:
+
+    V(r) = 4 * ε * [(σ / r)^12 - (σ / r)^6]
+
+    Where:
+    - V(r) is the potential energy between two particles at distance r.
+    - ε is the depth of the potential energy well.
+    - σ is the finite distance at which the inter-particle potential is zero.
+    - r is the distance between the particles.
+
+    <a/> https://en.wikipedia.org/wiki/Lennard-Jones_potential
+
+    Here I am using A, B scheme for LJ potential.
+    Where:
+    -> A = 4 * ε * σ ^12 
+    -> B = 4 * ε * σ ^12 
+    #
+    -> pos = position of each atom ; vel = velocity of each atom ;
+    -> force = forces on each atom ; mass = mass of each atom ;
+    -> box = box size ; eps = epsilon ; sig = sigma ;
+    -> dt = time step ; n = number of atoms ;
+    -> Kb = Boltzmann constant ;
+    #
     '''
+    #####################################################################
     A = 4*eps*sigma**12
     B = 4*eps*sigma**6
     ev_au  = 27.21139
@@ -60,8 +80,17 @@ def compute_force(pos, box, n, eps, sigma):
         print(f'dist: {R*0.529177} pot: {pot}\n')
     return R, pot, force
 
-################################
-
+#####################################################################
+'''
+updating positions and velocities of each atom using Velocity-Verlet integration
+#
+-> pos = position of each atom ; force = forces on each atom ;
+-> vel = velocity of each atom ; dt = time step ; n = number of atoms ;
+-> mass = mass of each atom ; box = size of the simulation box
+#
+update_pos(pos, force, vel, dt, n, mass, box)
+#
+'''
 def update_pos(pos, force, vel, dt, n, mass, box):
     # updating positions of each n-atom
     for i in range (0, n):
@@ -77,7 +106,7 @@ def update_pos(pos, force, vel, dt, n, mass, box):
             
     return pos
 
-################################
+#####################################################################
 
 def update_vel(vel, force, mass, dt, n):
     # updating velocities of each n-atom
@@ -86,7 +115,11 @@ def update_vel(vel, force, mass, dt, n):
             vel[i, j] = vel[i, j] + (0.5 * dt * (force[i,j]) / mass[i])
 
     return vel
-################################
+
+#####################################################################
+'''
+Intialiaze velocity from a Boltzmann distribution
+'''
 def initial_vel(T, vel, mass, n, Kb=1.0):
     import math as m
     # intialize velocity from a Boltzmann distribution
@@ -106,7 +139,8 @@ def initial_vel(T, vel, mass, n, Kb=1.0):
         temp = (0.5*mass[i]*(vel[i,0]**2 + vel[i,1]**2 + vel[i,2]**2))/Kb
         print(f'\n Velocities:,{vel[i,0], vel[i,1], vel[i,2]}, Temperature:,{temp}')
     return vel
-################################
+
+#####################################################################
 def compute_ke(vel, mass, n, Kb=1.0):
     # computing kinetic energies and temperature
     ke = 0.0
@@ -115,7 +149,8 @@ def compute_ke(vel, mass, n, Kb=1.0):
         ke += (0.5*mass[i]*(vel[i,0]**2 + vel[i,1]**2 + vel[i,2]**2))
     temp = (2.0 * ke)/(3.0 *n * Kb)
     return ke, temp
-################################
+
+#####################################################################
 def vel_rescale(vel, mass, n, temp, Kb=1.0):
     '''
     # velocity rescaling
@@ -134,12 +169,12 @@ def vel_rescale(vel, mass, n, temp, Kb=1.0):
     # print(f'scale : {scale}')
     return vel
 
-################################
+#####################################################################
 def langevin_dynamics(force, vel, mass, n, temp, dt, Kb=1.0, gamma=0.01):
     '''
     Langevin modified forces to control system temperature. 
     This consists of adding a friction term to the force.
-    The random force is calculated such that the average force is zero
+    The random force is calculated such that the average force is zero.
     gamma : friction coefficient
     '''
     for i in range (0, n):
@@ -155,7 +190,8 @@ def langevin_dynamics(force, vel, mass, n, temp, dt, Kb=1.0, gamma=0.01):
             #force[i, j] += friction + random_force
             # force[i,j] += np.sqrt(2 * gamma * Kb * temp / mass[i]) * r
     return force
-################################
+
+#####################################################################
 input_file = sys.argv[1]
 
 with open(input_file, 'r') as f:
@@ -171,7 +207,8 @@ with open(input_file, 'r') as f:
         pos[i, 0] = float(cord[1])
         pos[i, 1] = float(cord[2])
         pos[i, 2] = float(cord[3])
-################################
+
+#####################################################################
 print(f'num of atoms: {n}')
 dt = 20.0 ; Kb = 1.0
 step = 10000 ; T = 0.0005
